@@ -45,3 +45,5 @@
 /home/pxk/Documentos/o8/APP/ApiRest/bin/Debug/netcoreapp3.1/System.ComponentModel.Annotations.dll
 /home/pxk/Documentos/o8/APP/ApiRest/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll
 /home/pxk/Documentos/o8/APP/ApiRest/obj/Debug/netcoreapp3.1/ApiRest.csproj.CopyComplete
+/home/pxk/Documentos/o8/APP/ApiRest/bin/Debug/netcoreapp3.1/CryptSharp.dll
+/home/pxk/Documentos/o8/APP/ApiRest/bin/Debug/netcoreapp3.1/Scrypt.dll
