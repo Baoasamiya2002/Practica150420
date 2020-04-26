@@ -26,10 +26,10 @@ namespace ApiRest.Utilities
             return salt;
         }
 
-        public string Hash(string contrasena, byte[] salt)
+        public string Hash(string contrasena, string salt)
         {
             var keyBytes = Encoding.UTF8.GetBytes(contrasena);
-            var saltBytes = salt;
+            var saltBytes = Encoding.UTF8.GetBytes(salt);
             var cost = 262144;
             var blockSize = 8;
             var parallel = 1;
