@@ -127,14 +127,10 @@ namespace ApiRest.Controllers
             {
                 return NotFound();
             }
-            _contexto.Cuentas.Remove(cuentaExistente);
+            cuentaExistente.Acceso = false;
+            _contexto.Cuentas.Update(cuentaExistente);
             _contexto.SaveChanges();
-            return Content("Eliminado cuenta: " + 1);
+            return CreatedAtAction(nameof(ObtenerPorId), new { cuentaExistente.Id }, cuentaExistente);
         }
-        //post crear cuenta
-        //post iniciar sesion
-        //put modificar cuenta
-        //patch cambiar contraseña
-        //delete cambiar bandera que define si tiene acceso
     }
 }
