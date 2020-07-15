@@ -11,9 +11,8 @@ namespace ApiRest.Utilities
     public class UtilidadContrasena
     {
         private static int saltLengthLimit = 32;
-        private static byte[] GetSalt()
+        public byte[] GetSalt()
         {
-            Crypter.
             return GetSalt(saltLengthLimit);
         }
         private static byte[] GetSalt(int maximumSaltLength)
@@ -27,10 +26,10 @@ namespace ApiRest.Utilities
             return salt;
         }
 
-        public string Hash(string contrasena)
+        public string Hash(string contrasena, byte[] salt)
         {
             var keyBytes = Encoding.UTF8.GetBytes(contrasena);
-            var saltBytes = GetSalt();
+            var saltBytes = salt;
             var cost = 262144;
             var blockSize = 8;
             var parallel = 1;

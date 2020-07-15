@@ -45,7 +45,9 @@ namespace ApiRest.Controllers
         public IActionResult Crear(Cuenta cuenta)
         {
             UtilidadContrasena utilidadContrasena = new UtilidadContrasena();
-            var contrasenaHash = utilidadContrasena.Hash(cuenta.Contrasena);
+            var salt = utilidadContrasena.GetSalt();
+            var contrasenaHash = utilidadContrasena.Hash(cuenta.Contrasena, salt);
+            //cuenta.Salt = //salt;
             cuenta.Contrasena = contrasenaHash;
             _contexto.Cuentas.Add(cuenta);
             _contexto.SaveChanges();
@@ -53,12 +55,12 @@ namespace ApiRest.Controllers
         }
 
         [HttpPost]
-        [Route("iniciarSesion/{usuario}/{contrasena}")]
+        [Route("iniciarSesion")]
         public IActionResult IniciarSesion(string usuario, string contrasena)
         {
             var cuentaExistente = _contexto.Cuentas.FirstOrDefault(cuenta => cuenta.Usuario == usuario);
             UtilidadContrasena utilidadContrasena = new UtilidadContrasena();
-            var contrasenaHash = utilidadContrasena.Hash(contrasena);
+            var contrasenaHash = "";//utilidadContrasena.Hash(contrasena);
             if (cuentaExistente == null)
             {
                 return NotFound();
@@ -68,6 +70,10 @@ namespace ApiRest.Controllers
             }
             return Content(contrasenaHash/*"sesión iniciada"*/);
         }
+
+        //
+
+               
 
         //post crear cuenta
         //post iniciar sesion
