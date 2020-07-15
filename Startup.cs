@@ -28,7 +28,10 @@ namespace ApiRest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContextPool<GestionCuentasContext>(options => options.UseLazyLoadingProxies().UseMySql("server=localhost;database=gestioncuentas;uid=gestioncuentas;password=gestioncuentas"));
+            services.AddDbContextPool<GestionCuentasContext>(options => options.UseLazyLoadingProxies().UseMySql("server=localhost;database=gestioncuentas;uid=gestioncuentas;password=gestioncuentas", builder =>
+        {
+            builder.EnableRetryOnFailure();
+        }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
